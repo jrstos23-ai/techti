@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechTI — Tecnologia e Informação</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#inicio">Tech<span>TI</span></a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#blog">Blog</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section id="inicio" class="hero">
+  <div class="container">
+    <p class="tag">TECNOLOGIA • INOVAÇÃO • TI</p>
+    <h1>Tecnologia que transforma<br>ideias em soluções.</h1>
+    <p class="lead">Conteúdo sobre Tecnologia da Informação, segurança, inteligência artificial, nuvem e inovação.</p>
+    <a class="button" href="#blog">Conheça nosso blog</a>
+  </div>
+</section>
+
+<section id="sobre" class="section">
+<div class="container">
+  <h2>Sobre o TechTI</h2>
+  <p>O TechTI é um projeto acadêmico voltado à Tecnologia da Informação. Nosso objetivo é apresentar conceitos de TI de forma simples, objetiva e acessível para estudantes e interessados em tecnologia.</p>
+</div>
+</section>
+
+<section id="servicos" class="section alt">
+<div class="container">
+<h2>Áreas de TI</h2>
+<div class="cards">
+  <article><div class="icon">☁️</div><h3>Computação em Nuvem</h3><p>Conheça recursos e benefícios dos serviços em nuvem.</p></article>
+  <article><div class="icon">🔐</div><h3>Segurança da Informação</h3><p>Boas práticas para proteger sistemas, dados e usuários.</p></article>
+  <article><div class="icon">🤖</div><h3>Inteligência Artificial</h3><p>Entenda como a IA está mudando a área de tecnologia.</p></article>
+  <article><div class="icon">🌐</div><h3>Redes e IoT</h3><p>Dispositivos conectados e comunicação entre sistemas.</p></article>
+</div>
+</div>
+</section>
+
+<section id="blog" class="section">
+<div class="container">
+<h2>Blog TechTI</h2>
+<p class="subtitle">Cinco artigos curtos sobre temas atuais de Tecnologia da Informação.</p>
+<div class="articles">
+<article class="post"><span>01</span><h3>O que é Computação em Nuvem?</h3><p>A computação em nuvem permite utilizar servidores, armazenamento e aplicações pela internet. Empresas podem reduzir custos de infraestrutura e aumentar a flexibilidade dos seus sistemas.</p></article>
+<article class="post"><span>02</span><h3>A importância da Segurança da Informação</h3><p>Segurança da Informação busca proteger dados contra acesso indevido, alteração, perda ou indisponibilidade. Senhas fortes, atualizações e backups são medidas essenciais.</p></article>
+<article class="post"><span>03</span><h3>Inteligência Artificial na TI</h3><p>A Inteligência Artificial permite que sistemas analisem dados, reconheçam padrões e auxiliem na tomada de decisões. Ela já é utilizada em atendimento, segurança, desenvolvimento e automação.</p></article>
+<article class="post"><span>04</span><h3>O que é Internet das Coisas (IoT)?</h3><p>IoT conecta objetos físicos à internet para coletar e trocar informações. Casas inteligentes, sensores industriais e dispositivos vestíveis são exemplos dessa tecnologia.</p></article>
+<article class="post"><span>05</span><h3>A importância da Governança de TI</h3><p>A Governança de TI ajuda a alinhar tecnologia e objetivos organizacionais. Ela contribui para melhorar decisões, controlar riscos e utilizar os recursos de TI de maneira eficiente.</p></article>
+</div>
+</div>
+</section>
+
+<section id="contato" class="section alt">
+<div class="container contact">
+<div>
+<h2>Entre em contato</h2>
+<p>Envie uma mensagem para o projeto TechTI.</p>
+<p><strong>E-mail:</strong> contato@techti.com.br</p>
+<p><strong>Telefone:</strong> (13) 99999-9999</p>
+<p><strong>Localização:</strong> Santos — SP</p>
+</div>
+<form onsubmit="enviarMensagem(event)">
+<label>Nome<input required type="text" placeholder="Seu nome"></label>
+<label>E-mail<input required type="email" placeholder="seu@email.com"></label>
+<label>Mensagem<textarea required rows="5" placeholder="Digite sua mensagem"></textarea></label>
+<button class="button" type="submit">Enviar mensagem</button>
+</form>
+</div>
+</section>
+</main>
+
+<footer><div class="container"><p>© 2026 TechTI — Tecnologia e Informação | Projeto acadêmico</p></div></footer>
+<script src="script.js"></script>
+</body>
+</html>

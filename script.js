@@ -1,0 +1,1 @@
+function enviarMensagem(event){event.preventDefault();alert("Mensagem enviada com sucesso! Obrigado por entrar em contato com o TechTI.");event.target.reset();}
