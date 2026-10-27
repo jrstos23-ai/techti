@@ -1,88 +1,338 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TechTI — Tecnologia e Informação</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechTI - Portal de Tecnologia e Inovação</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --bg-color: #f8fafc;
+            --text-color: #1e293b;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            padding: 2rem 0;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #f1f5f9;
+        }
+
+        /* Grid Cards (Blog & Sobre) */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .card-category {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 0.75rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.25rem;
+            width: 30px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #64748b;
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media(max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<header>
-  <div class="container nav">
-    <a class="logo" href="#inicio">Tech<span>TI</span></a>
-    <nav>
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#blog">Blog</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </div>
-</header>
 
-<main>
-<section id="inicio" class="hero">
-  <div class="container">
-    <p class="tag">TECNOLOGIA • INOVAÇÃO • TI</p>
-    <h1>Tecnologia que transforma<br>ideias em soluções.</h1>
-    <p class="lead">Conteúdo sobre Tecnologia da Informação, segurança, inteligência artificial, nuvem e inovação.</p>
-    <a class="button" href="#blog">Conheça nosso blog</a>
-  </div>
-</section>
+    <!-- Cabeçalho de Navegação -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="switchTab('inicio')"><i class="fa-solid fa-microchip"></i> TechTI</a>
+            <ul class="nav-links">
+                <li><a href="#" onclick="switchTab('inicio')">Início</a></li>
+                <li><a href="#" onclick="switchTab('blog')">Blog</a></li>
+                <li><a href="#" onclick="switchTab('sobre')">Sobre</a></li>
+                <li><a href="#" onclick="switchTab('contato')">Contato</a></li>
+            </ul>
+        </div>
+    </header>
 
-<section id="sobre" class="section">
-<div class="container">
-  <h2>Sobre o TechTI</h2>
-  <p>O TechTI é um projeto acadêmico voltado à Tecnologia da Informação. Nosso objetivo é apresentar conceitos de TI de forma simples, objetiva e acessível para estudantes e interessados em tecnologia.</p>
-</div>
-</section>
+    <div class="container">
 
-<section id="servicos" class="section alt">
-<div class="container">
-<h2>Áreas de TI</h2>
-<div class="cards">
-  <article><div class="icon">☁️</div><h3>Computação em Nuvem</h3><p>Conheça recursos e benefícios dos serviços em nuvem.</p></article>
-  <article><div class="icon">🔐</div><h3>Segurança da Informação</h3><p>Boas práticas para proteger sistemas, dados e usuários.</p></article>
-  <article><div class="icon">🤖</div><h3>Inteligência Artificial</h3><p>Entenda como a IA está mudando a área de tecnologia.</p></article>
-  <article><div class="icon">🌐</div><h3>Redes e IoT</h3><p>Dispositivos conectados e comunicação entre sistemas.</p></article>
-</div>
-</div>
-</section>
+        <!-- Seção Início -->
+        <section id="inicio" class="active">
+            <div class="hero">
+                <h1>Transformando Ideias em Soluções Tecnológicas</h1>
+                <p>Bem-vindo ao portal de referência em Tecnologia da Informação. Explore nossos artigos, tendências de mercado, cibersegurança e inovação digital.</p>
+                <a href="#" class="btn" onclick="switchTab('blog')">Acessar o Blog</a>
+            </div>
+        </section>
 
-<section id="blog" class="section">
-<div class="container">
-<h2>Blog TechTI</h2>
-<p class="subtitle">Cinco artigos curtos sobre temas atuais de Tecnologia da Informação.</p>
-<div class="articles">
-<article class="post"><span>01</span><h3>O que é Computação em Nuvem?</h3><p>A computação em nuvem permite utilizar servidores, armazenamento e aplicações pela internet. Empresas podem reduzir custos de infraestrutura e aumentar a flexibilidade dos seus sistemas.</p></article>
-<article class="post"><span>02</span><h3>A importância da Segurança da Informação</h3><p>Segurança da Informação busca proteger dados contra acesso indevido, alteração, perda ou indisponibilidade. Senhas fortes, atualizações e backups são medidas essenciais.</p></article>
-<article class="post"><span>03</span><h3>Inteligência Artificial na TI</h3><p>A Inteligência Artificial permite que sistemas analisem dados, reconheçam padrões e auxiliem na tomada de decisões. Ela já é utilizada em atendimento, segurança, desenvolvimento e automação.</p></article>
-<article class="post"><span>04</span><h3>O que é Internet das Coisas (IoT)?</h3><p>IoT conecta objetos físicos à internet para coletar e trocar informações. Casas inteligentes, sensores industriais e dispositivos vestíveis são exemplos dessa tecnologia.</p></article>
-<article class="post"><span>05</span><h3>A importância da Governança de TI</h3><p>A Governança de TI ajuda a alinhar tecnologia e objetivos organizacionais. Ela contribui para melhorar decisões, controlar riscos e utilizar os recursos de TI de maneira eficiente.</p></article>
-</div>
-</div>
-</section>
+        <!-- Seção Blog Agregado (5 Artigos) -->
+        <section id="blog">
+            <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-newspaper"></i> Blog Agregado de TI</h2>
+            <div class="grid">
+                <!-- Artigo 1 -->
+                <div class="card">
+                    <span class="card-category">Inteligência Artificial</span>
+                    <h3>O que é IA Generativa e Como Ela Impacta a TI?</h3>
+                    <p>A Inteligência Artificial Generativa vai além de automatizar tarefas; ela cria códigos, textos e designs, otimizando o desenvolvimento de software e a análise de dados.</p>
+                </div>
+                <!-- Artigo 2 -->
+                <div class="card">
+                    <span class="card-category">Cibersegurança</span>
+                    <h3>5 Práticas Essenciais de Segurança para Empresas</h3>
+                    <p>Pequenas e médias empresas também são alvos. Proteja-se ativando 2FA, mantendo sistemas atualizados, fazendo backups regulares e treinando equipes contra phishing.</p>
+                </div>
+                <!-- Artigo 3 -->
+                <div class="card">
+                    <span class="card-category">Cloud Computing</span>
+                    <h3>Por que a Computação em Nuvem é Indispensável?</h3>
+                    <p>Escalabilidade, redução de custos com infraestrutura física e acesso remoto seguro tornaram a nuvem (AWS, Azure, GCP) um pilar básico corporativo.</p>
+                </div>
+                <!-- Artigo 4 -->
+                <div class="card">
+                    <span class="card-category">Gestão de TI</span>
+                    <h3>O Papel da Metodologia Ágil (Scrum)</h3>
+                    <p>Entregas rápidas e adaptação a mudanças com ciclos curtos (Sprints). O Scrum melhora a comunicação e o alinhamento de valor com o cliente final.</p>
+                </div>
+                <!-- Artigo 5 -->
+                <div class="card">
+                    <span class="card-category">DevOps</span>
+                    <h3>O que é DevOps e Seus Benefícios?</h3>
+                    <p>A cultura que integra desenvolvimento e operações para automatizar fluxos, gerando lançamentos mais rápidos, estáveis e seguros em produção.</p>
+                </div>
+            </div>
+        </section>
 
-<section id="contato" class="section alt">
-<div class="container contact">
-<div>
-<h2>Entre em contato</h2>
-<p>Envie uma mensagem para o projeto TechTI.</p>
-<p><strong>E-mail:</strong> contato@techti.com.br</p>
-<p><strong>Telefone:</strong> (13) 99999-9999</p>
-<p><strong>Localização:</strong> Santos — SP</p>
-</div>
-<form onsubmit="enviarMensagem(event)">
-<label>Nome<input required type="text" placeholder="Seu nome"></label>
-<label>E-mail<input required type="email" placeholder="seu@email.com"></label>
-<label>Mensagem<textarea required rows="5" placeholder="Digite sua mensagem"></textarea></label>
-<button class="button" type="submit">Enviar mensagem</button>
-</form>
-</div>
-</section>
-</main>
+        <!-- Seção Sobre -->
+        <section id="sobre">
+            <h2 style="margin-bottom: 1.5rem;"><i class="fa-solid fa-info-circle"></i> Sobre o Projeto</h2>
+            <div class="card">
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    Somos um portal dedicado a simplificar conceitos complexos de Tecnologia da Information (TI). Criado como parte de atividades laboratoriais acadêmicas, este espaço reúne conhecimento prático e teórico sobre desenvolvimento web, infraestrutura moderna, inovação e boas práticas de mercado.
+                </p>
+            </div>
+        </section>
 
-<footer><div class="container"><p>© 2026 TechTI — Tecnologia e Informação | Projeto acadêmico</p></div></footer>
-<script src="script.js"></script>
+        <!-- Seção Contato -->
+        <section id="contato">
+            <h2 style="margin-bottom: 1.5rem; text-align: center;"><i class="fa-solid fa-envelope"></i> Fale Conosco</h2>
+            <div class="contact-box">
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope-open-text"></i>
+                    <span><strong>E-mail:</strong> contato@techti.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <span><strong>Atendimento:</strong> Segunda a Sexta, das 08h às 18h</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span><strong>Localização:</strong> Brasil (Atendimento Online)</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 TechTI - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script Simples para Navegação por Abas -->
+    <script>
+        function switchTab(tabId) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(sec => sec.classList.remove('active'));
+            
+            const target = document.getElementById(tabId);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+    </script>
 </body>
 </html>
